@@ -12,7 +12,7 @@ setup(
     long_description=readme,
     author_email='angela.chiatto@unina.it',
     license='MIT',
-    url='https://github.com/Quasar-UniNA/EVOVAQ.git',
+    url='https://github.com/Quasar-UniNA/EVOVAQ',
     keywords=['Optimization Algorithms', 'Quantum Computing', 'Evolutionary Algorithms',
                 'Variational Quantum Circuits']
     install_requires=[
