@@ -53,11 +53,11 @@ setup(
     sphinxcontrib-serializinghtml==1.1.5
     sphinx-rtd-theme==1.3.0
       ],
-  classifiers=[
+    classifiers=[
     'Development Status :: 3 - Alpha',      
     'Intended Audience :: Developers',      
     'Topic :: Software Development :: Build Tools',
     'License :: OSI Approved :: MIT License',  
     'Programming Language :: Python :: 3'
-  ],
+      ],
 )
