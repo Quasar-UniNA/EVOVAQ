@@ -40,7 +40,7 @@ class CHC(object):
                   measured between two fitness values, so Euclidean distance can be considered.
         multiplier: Factor influencing the initial crossover threshold.
         dec_percentage:  Crossover threshold update rate.
-        kwargs: Additional keyword arguments used to set hyperparameter values of crossover operators.
+        kwargs: Additional keyword arguments used to set hyperparameter values of crossover operator.
     """
     def __init__(self,
                  crossover: Callable, distance: Callable, multiplier: float = 1, dec_percentage: float = 0.1, **kwargs):
@@ -55,7 +55,7 @@ class CHC(object):
         else:
             self.crossover = crossover
 
-    def incest_prevention_check(self, parents: np.ndarray, fitness: np.ndarray, thr: float) -> (np.ndarray, np.ndarray):
+    def incest_prevention_check(self, parents: np.ndarray, fitness: np.ndarray, thr: float) -> tuple[np.ndarray, np.ndarray]:
         """
         Incest prevention check. Before mating, the similarity between the potential parents is calculated, and if this
         distance does not exceed the threshold `thr`, they are not mated.
@@ -77,7 +77,7 @@ class CHC(object):
                 pass
         return parents[allowed], fitness[allowed]
 
-    def initialize_cx_threshold(self, population: np.ndarray, fitness: np.ndarray) -> (float, float):
+    def initialize_cx_threshold(self, population: np.ndarray, fitness: np.ndarray) -> tuple[float, float]:
         """
         Initialize the crossover threshold and compute the decrement value.
 

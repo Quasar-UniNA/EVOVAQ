@@ -16,7 +16,7 @@ class MA(object):
 
     References:
         [1] P. Moscato, et al., "On evolution, search, optimization, genetic algorithms and martial arts: towards memetic
-         algorithms", Caltech concurrent computation program, C3P Report, vol. 826, pp. 37, 1989.
+        algorithms", Caltech concurrent computation program, C3P Report, vol. 826, pp. 37, 1989.
 
         [2] Giovanni Acampora, Angela Chiatto, and Autilia Vitiello, "Training circuit-based quantum classifiers through
         memetic algorithms", Pattern Recognition Letters, Elsevier, 2023.

@@ -3,7 +3,7 @@ from typing import Union, Sequence
 
 
 # ---------- SELECTION OPERATORS ------------
-def sel_best(population: np.ndarray, fitness: np.ndarray, k: int) -> (np.ndarray, np.ndarray):
+def sel_best(population: np.ndarray, fitness: np.ndarray, k: int) -> tuple[np.ndarray, np.ndarray]:
     """
     Select the first `k` best individuals (with the smallest objective values) in the population.
 
@@ -21,7 +21,7 @@ def sel_best(population: np.ndarray, fitness: np.ndarray, k: int) -> (np.ndarray
     return population[sorted_idx[:k]], fitness[sorted_idx[:k]]
 
 
-def sel_permutation(population: np.ndarray, fitness: np.ndarray) -> (np.ndarray, np.ndarray):
+def sel_permutation(population: np.ndarray, fitness: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
     """
     Select the mating pool by permutation of the population indices.
 
@@ -38,7 +38,7 @@ def sel_permutation(population: np.ndarray, fitness: np.ndarray) -> (np.ndarray,
     return population[permutation_idx], fitness[permutation_idx]
 
 
-def sel_tournament(population: np.ndarray, fitness: np.ndarray, k: int, tournsize: int = 3) -> (np.ndarray, np.ndarray):
+def sel_tournament(population: np.ndarray, fitness: np.ndarray, k: int, tournsize: int = 3) -> tuple[np.ndarray, np.ndarray]:
     """
     Select the best individual among `tournsize` randomly chosen individuals, `k` times.
 
@@ -62,7 +62,7 @@ def sel_tournament(population: np.ndarray, fitness: np.ndarray, k: int, tournsiz
     return population[chosen], fitness[chosen]
 
 
-def sel_random(population: np.ndarray, fitness: np.ndarray, k: int, replace: bool = True) -> (np.ndarray, np.ndarray):
+def sel_random(population: np.ndarray, fitness: np.ndarray, k: int, replace: bool = True) -> tuple[np.ndarray, np.ndarray]:
     """
     Select `k` individuals randomly.
 
@@ -83,7 +83,7 @@ def sel_random(population: np.ndarray, fitness: np.ndarray, k: int, replace: boo
 
 
 # ---------- CROSSOVER OPERATORS ------------
-def cx_blx_alpha(par1: np.ndarray, par2: np.ndarray, alpha: float = 0.5) -> (np.ndarray, np.ndarray):
+def cx_blx_alpha(par1: np.ndarray, par2: np.ndarray, alpha: float = 0.5) -> tuple[np.ndarray, np.ndarray]:
     """
     BLX-alpha crossover.
 
@@ -104,7 +104,7 @@ def cx_blx_alpha(par1: np.ndarray, par2: np.ndarray, alpha: float = 0.5) -> (np.
     return child1, child2
 
 
-def cx_one_point(par1: np.ndarray, par2: np.ndarray) -> (np.ndarray, np.ndarray):
+def cx_one_point(par1: np.ndarray, par2: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
     """
     One-point crossover.
 
@@ -121,7 +121,7 @@ def cx_one_point(par1: np.ndarray, par2: np.ndarray) -> (np.ndarray, np.ndarray)
     return child1, child2
 
 
-def cx_two_point(par1: np.ndarray, par2: np.ndarray) -> (np.ndarray, np.ndarray):
+def cx_two_point(par1: np.ndarray, par2: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
     """
     Two-point crossover.
 
@@ -138,7 +138,7 @@ def cx_two_point(par1: np.ndarray, par2: np.ndarray) -> (np.ndarray, np.ndarray)
     return child1, child2
 
 
-def cx_uniform(par1: np.ndarray, par2: np.ndarray, cx_indpb: float = 0.5) -> (np.ndarray, np.ndarray):
+def cx_uniform(par1: np.ndarray, par2: np.ndarray, cx_indpb: float = 0.5) -> tuple[np.ndarray, np.ndarray]:
     """
     Uniform crossover.
 

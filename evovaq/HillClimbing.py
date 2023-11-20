@@ -20,9 +20,10 @@ class HC(object):
 
     Args:
         generate_neighbour: A way of generating a neighbour of a current solution. This function is defined as
-        `generate_neighbour(prob, ind, *args) -> neighbour``, where ``prob`` is :class:`~.Problem` to be solved; ``ind``
-        is an array of real parameters with (`n_params`,); ``args`` is a tuple of other fixed parameters needed to
-        specify the function; and the output is the neighbour with the same shape as ``ind`` and ``fitness``.
+                            ``generate_neighbour(prob, ind, *args) -> neighbour``, where ``prob`` is :class:`~.Problem`
+                            to be solved; ``ind`` is an array of real parameters with (`n_params`,); ``args`` is a tuple
+                            of other fixed parameters needed to specify the function; and the output is the neighbour
+                            with the same shape as ``ind`` and ``fitness``.
     """
     def __init__(self, generate_neighbour: Callable):
         self.generate_neighbour = generate_neighbour
