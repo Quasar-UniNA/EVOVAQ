@@ -13,8 +13,7 @@ setup(
     author_email='angela.chiatto@unina.it',
     license='MIT',
     url='https://github.com/Quasar-UniNA/EVOVAQ',
-    keywords=['Optimization Algorithms', 'Quantum Computing', 'Evolutionary Algorithms',
-                'Variational Quantum Circuits'],
+    keywords=['Optimization Algorithms', 'Quantum Computing', 'Evolutionary Algorithms', 'Variational Quantum Circuits'],
     install_requires=[
     numpy~=1.23.5
     setuptools>=65.5.1
