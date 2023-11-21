@@ -22,7 +22,7 @@ setup(
         'matplotlib==3.5.1',
         'pandas==1.4.2',
         'openpyxl==3.0.9',
-        'scikit-learn=1.1.3',
+        'scikit-learn==1.1.3',
         'qiskit==0.36.2',
         'networkx==3.1',
         'qiskit-optimization==0.4.0',
