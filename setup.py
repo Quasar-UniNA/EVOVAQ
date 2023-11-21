@@ -6,15 +6,14 @@ with open('README.md') as f:
 setup(
     name='evovaq',
     packages=['evovaq'],
-    version='1.0.0',
+    version='1.0.2',
     description='EVOlutionary algorithms toolbox for VAriational Quantum circuits',
     author='Angela Chiatto',
     long_description=readme,
     author_email='angela.chiatto@unina.it',
     license='MIT',
     url='https://github.com/Quasar-UniNA/EVOVAQ',
-    keywords=['Optimization Algorithms', 'Quantum Computing', 'Evolutionary Algorithms',
-                'Variational Quantum Circuits']
+    keywords=['Quantum Computing', 'Evolutionary Algorithms', 'Variational Quantum Circuits'],
     install_requires=[
     numpy~=1.23.5
     setuptools>=65.5.1
