@@ -17,7 +17,6 @@ setup(
     keywords=['Quantum Computing', 'Evolutionary Algorithms', 'Variational Quantum Circuits'],
     install_requires=[
         'numpy==1.23.5',
-        'setuptools==65.5.1',
         'tabulate==0.8.10',
         'tqdm==4.64.1',
         'matplotlib==3.5.1',
