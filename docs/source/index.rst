@@ -25,8 +25,16 @@ these algorithms and quantum libraries, such as Qiskit.
 
 * Hill Climbing
 
-How to install it
+Installation
 ======================
+You can install EVOVAQ via ``pip``:
+
+.. code-block:: bash
+  pip install evovaq
+
+Pip will handle all dependencies automatically and you will always install the latest version.
+
+
 .. toctree::
    :hidden:
    :caption: Tutorials
