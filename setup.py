@@ -6,7 +6,7 @@ with open('README.md') as f:
 setup(
     name='evovaq',
     packages=['evovaq'],
-    version='1.0.2',
+    version='1.0.3',
     description='EVOlutionary algorithms toolbox for VAriational Quantum circuits',
     author='Angela Chiatto',
     long_description=readme,
@@ -15,20 +15,18 @@ setup(
     url='https://github.com/Quasar-UniNA/EVOVAQ',
     keywords=['Quantum Computing', 'Evolutionary Algorithms', 'Variational Quantum Circuits'],
     install_requires=[
-    numpy~=1.23.5
+    numpy==1.23.5
     setuptools>=65.5.1
-    tabulate~=0.8.10
-    tqdm~=4.64.1
-    matplotlib~=3.5.1
-    pandas~=1.4.2
-    openpyxl~=3.0.9
-    scikit-learn
-    scikit-learn~=1.1.3
-    qiskit~=0.36.2
-    deap~=1.3.1
-    networkx~=3.1
-    qiskit-optimization~=0.4.0
-    qiskit-aer~=0.10.4
+    tabulate==0.8.10
+    tqdm==4.64.1
+    matplotlib==3.5.1
+    pandas==1.4.2
+    openpyxl==3.0.9
+    scikit-learn=1.1.3
+    qiskit==0.36.2
+    networkx==3.1
+    qiskit-optimization==0.4.0
+    qiskit-aer==0.10.4
     jupyter==1.0.0
     jupyter-client
     jupyter-console
@@ -40,7 +38,7 @@ setup(
     jupyter-nbextensions-configurator==0.4.1
     jupyterlab-pygments
     jupyterlab-widgets
-    nbsphinx~=0.9.3
+    nbsphinx==0.9.3
     pandocfilters
     parso
     Sphinx==5.1.1
