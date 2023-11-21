@@ -167,7 +167,7 @@ class Particle:
 
         References:
             [1] Shi, Y., & Eberhart, R. C., "A modified particle swarm optimizer", Proceedings of the IEEE international
-             conference on evolutionary computation, pp. 69–73, 1998.
+            conference on evolutionary computation, pp. 69–73, 1998.
 
         Args:
             gbest: Global best position ever visited.
