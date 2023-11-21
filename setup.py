@@ -6,7 +6,7 @@ with open('README.md') as f:
 setup(
     name='evovaq',
     packages=['evovaq'],
-    version='1.0.14',
+    version='1.0.15',
     description='EVOlutionary algorithms toolbox for VAriational Quantum circuits',
     author='Angela Chiatto',
     long_description=readme,
