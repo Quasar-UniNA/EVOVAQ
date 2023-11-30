@@ -209,16 +209,33 @@ class CHC(object):
                 population[:] = joint_pop[sorted_idx[:pop_size]]
                 fitness[:] = joint_fitness[sorted_idx[:pop_size]]
 
-                # Store the best solution ever found
-                best_tracker.update(population, fitness)
-
             else:
                 sorted_idx = None
+                nfev = 0
 
             # Decrease the distance threshold
             if sorted_idx is None or np.all(sorted_idx[:pop_size] < pop_size):
                 thr -= dec
-
+            # Reinitialization process: if thr <= 0, all parents, even equal, combine and thus there is no exploration
+                if thr <= 0:
+                    best, best_fit = sel_best(population, fitness, 1)
+                    rand_individuals = problem.generate_random_pop(pop_size - 1)
+                    rand_fitness = np.array(list(map(problem.evaluate_fitness, rand_individuals)))
+                    next_population = np.concatenate((best, rand_individuals))
+                    next_fitness = np.concatenate((best_fit, rand_fitness))
+                    nfev += len(rand_individuals)
+                    tot_nfev += len(rand_individuals)
+    
+                    # Replace the population with a new population
+                    population[:] = next_population
+                    fitness[:] = next_fitness
+    
+                    # Re-compute the threshold and the decrement factor
+                    thr, dec = self.initialize_cx_threshold(population, fitness)
+    
+            # Store the best solution ever found
+            best_tracker.update(population, fitness)
+    
             # Compute the statistics of the fitness values
             stats = compute_statistics(fitness)
 
@@ -234,30 +251,6 @@ class CHC(object):
                 pbar.update(nfev)
             else:
                 pbar.update()
-
-            # Reinitialization process: if thr <= 0, all parents, even equal, combine and thus there is no exploration
-            if thr <= 0:
-                best, best_fit = sel_best(population, fitness, 1)
-                rand_individuals = problem.generate_random_pop(pop_size - 1)
-                rand_fitness = np.array(list(map(problem.evaluate_fitness, rand_individuals)))
-                next_population = np.concatenate((best, rand_individuals))
-                next_fitness = np.concatenate((best_fit, rand_fitness))
-                nfev = len(rand_individuals)
-                tot_nfev += len(rand_individuals)
-
-                # Replace the population with a new population
-                population[:] = next_population
-                fitness[:] = next_fitness
-
-                # Re-compute the threshold and the decrement factor
-                thr, dec = self.initialize_cx_threshold(population, fitness)
-
-                # Store the best solution ever found
-                best_tracker.update(population, fitness)
-
-                # Re-update the progress bar
-                if max_nfev is not None:
-                    pbar.update(nfev)
 
         res = FinalResult(x=best_tracker.get_best(), fun=best_tracker.get_best_fit(), nfev=tot_nfev, gen=gen,
                           log=lg.get_log())
