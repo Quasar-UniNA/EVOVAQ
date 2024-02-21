@@ -15,7 +15,7 @@ sys.path.insert(0, os.path.abspath("../../"))
 project = 'evovaq'
 copyright = '2023, Angela Chiatto'
 author = 'Angela Chiatto'
-release = '1.0.0'
+release = '1.0.20'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
