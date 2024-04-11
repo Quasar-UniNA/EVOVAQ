@@ -5,7 +5,7 @@
 
 EVOVAQ's documentation
 ======================
-EVOlutionary algorithms toolbox for VAriational Quantum circuits (EVOVAQ) is a novel evolutionary framework designed
+EVOlutionary algorithms-based toolbox for VAriational Quantum circuits (EVOVAQ) is a novel evolutionary framework designed
 to easily train variational quantum circuits through evolutionary techniques, and to have a simple interface between
 these algorithms and quantum libraries, such as Qiskit.
 
