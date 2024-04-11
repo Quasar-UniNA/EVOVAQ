@@ -108,7 +108,7 @@ class HC(object):
                 pbar.close()
                 break
 
-            current_solution[:], current_fitness, nfev = self.variant(problem, current_solution, current_fitness)
+            current_solution[:], current_fitness, nfev = self.stochastic_var(problem, current_solution, current_fitness)
             tot_nfev += nfev
 
             # Record info in the logbook
