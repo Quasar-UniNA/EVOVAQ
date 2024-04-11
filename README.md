@@ -1,6 +1,6 @@
 # EVOVAQ [![Made at Quasar!](https://img.shields.io/badge/Unina-%20QuasarLab-blue)](http://quasar.unina.it) [![Made at Quasar!](https://img.shields.io/badge/Documentation-%20Readthedocs-brightgreen)](https://evovaq.readthedocs.io/en/latest/index.html)
 
-**EVOlutionary algorithms toolbox for VAriational Quantum circuits (EVOVAQ)** is a novel evolutionary framework designed
+**EVOlutionary algorithms-based toolbox for VAriational Quantum circuits (EVOVAQ)** is a novel evolutionary framework designed
 to easily train variational quantum circuits through evolutionary techniques, and to have a simple interface between
 these algorithms and quantum libraries, such as Qiskit.
 
