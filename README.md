@@ -29,3 +29,20 @@ pip install evovaq
 ```
 
 Pip will handle all dependencies automatically and you will always install the latest version.
+
+## Credits
+If you use EVOVAQ in your work, please cite the following paper:
+
+### BibTeX Citation
+
+```bibtex
+@article{evovaq,
+  title={EVOVAQ: EVOlutionary algorithms-based toolbox for VAriational Quantum circuits},
+  author={Acampora, Giovanni and Guti{\'e}rrez, Carlos Cano and Chiatto, Angela and Hidalgo, Jos{\'e} Manuel Soto and Vitiello, Autilia},
+  journal={SoftwareX},
+  volume={26},
+  pages={101756},
+  year={2024},
+  publisher={Elsevier}
+}
+
