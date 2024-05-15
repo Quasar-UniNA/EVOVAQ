@@ -5,9 +5,7 @@
 
 EVOVAQ's documentation
 ======================
-EVOlutionary algorithms-based toolbox for VAriational Quantum circuits (EVOVAQ) is a novel evolutionary framework designed
-to easily train variational quantum circuits through evolutionary techniques, and to have a simple interface between
-these algorithms and quantum libraries, such as Qiskit.
+EVOlutionary algorithms-based toolbox for VAriational Quantum circuits (EVOVAQ) is a novel evolutionary framework designedmto easily train variational quantum circuits through evolutionary techniques, and to have a simple interface between these algorithms and quantum libraries, such as Qiskit.
 
 **Optimizers in EVOVAQ:**
 
@@ -35,6 +33,23 @@ You can install EVOVAQ via ``pip``:
 
 Pip will handle all dependencies automatically and you will always install the latest version.
 
+Credits
+======================
+If you use EVOVAQ in your work, please cite the following paper:
+
+BibTeX Citation
+^^^^^^^^^^^^^^^
+
+.. code-block:: bibtex
+   @article{evovaq,
+     title={EVOVAQ: EVOlutionary algorithms-based toolbox for VAriational Quantum circuits},
+     author={Acampora, Giovanni and Guti{\'e}rrez, Carlos Cano and Chiatto, Angela and Hidalgo, Jos{\'e} Manuel Soto and Vitiello, Autilia},
+     journal={SoftwareX},
+     volume={26},
+     pages={101756},
+     year={2024},
+     publisher={Elsevier}
+   }
 
 .. toctree::
    :hidden:
