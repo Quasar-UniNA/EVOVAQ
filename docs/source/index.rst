@@ -41,6 +41,7 @@ BibTeX Citation
 ^^^^^^^^^^^^^^^
 
 .. code-block:: bibtex
+
    @article{evovaq,
      title={EVOVAQ: EVOlutionary algorithms-based toolbox for VAriational Quantum circuits},
      author={Acampora, Giovanni and Guti{\'e}rrez, Carlos Cano and Chiatto, Angela and Hidalgo, Jos{\'e} Manuel Soto and Vitiello, Autilia},
@@ -48,8 +49,7 @@ BibTeX Citation
      volume={26},
      pages={101756},
      year={2024},
-     publisher={Elsevier}
-   }
+     publisher={Elsevier}}
 
 .. toctree::
    :hidden:
