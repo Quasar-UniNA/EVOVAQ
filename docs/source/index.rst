@@ -38,7 +38,7 @@ Credits
 If you use EVOVAQ in your work, please cite the following paper:
 
 BibTeX Citation
-^^^^^^^^^^^^^^^
+----------------
 
 .. code-block:: bibtex
 
