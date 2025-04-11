@@ -13,12 +13,39 @@ class Problem:
         obj_function: The objective function to be minimized defined as ``obj_function(params, *args) -> float`` ,
                        where ``params`` is an array with (`n_params`,) shape and ``args`` is a tuple of other fixed
                        parameters needed to specify the function.
+        init_range: Initial sampling range used to generate random parameter values before optimization.
+                    It can be a single tuple (`min`, `max`) applied uniformly, or a list of such tuples of length
+                    `n_params` for individual ranges. If set to `None`, the initial range is inherited from
+                    `param_bounds`. If any parameter bound contains `None`, the corresponding initial range
+                    defaults to `(-1, 1)` for that parameter.
     """
 
-    def __init__(self, n_params: int, param_bounds: Union[tuple, list[tuple]], obj_function: Callable):
+    def __init__(self, n_params: int, param_bounds: Union[tuple, list[tuple]], obj_function: Callable, init_range: Union[tuple, list[tuple], None] = None):
         self.n_params = n_params
-        self.param_bounds = param_bounds
         self.obj_function = obj_function
+
+        if isinstance(param_bounds, tuple):
+                self.param_bounds = [param_bounds] * self.n_params
+            elif isinstance(param_bounds, list):
+                if not len(param_bounds) == self.n_params:
+                    raise ValueError(
+                        "Please insert the bounds as a tuple  of the type (min, max), (None, None), (min, None), (None, max), or a list of such tuples of length n_params")
+                else:
+                    self.param_bounds = param_bounds
+            else:
+                raise ValueError("Please insert the bounds as a tuple or a list of tuples of length n_params")
+                
+        if isinstance(init_range, tuple):
+            self.init_range = [init_range] * self.n_params
+        elif isinstance(init_range, list):
+            if not len(init_range) == self.n_params:
+                raise ValueError(
+                    "Please insert the initial range as a tuple (min, max) or a list of such tuples of length n_params")
+        elif init_range is None:
+            self.init_range = [params if None not in params else (-1, 1) for params in self.param_bounds]
+        else:
+            raise ValueError("Please insert the initial range as a tuple (min, max) or a list of tuples of length n_params")
+        
 
     def generate_individual(self) -> np.ndarray:
         """
@@ -27,18 +54,8 @@ class Problem:
         Returns:
             A possible solution randomly generated from `param_bounds`.
         """
-        if isinstance(self.param_bounds, tuple):
-            _min, _max = self.param_bounds
-            individual = np.random.uniform(low=_min, high=_max, size=self.n_params)
-        elif isinstance(self.param_bounds, list):
-            _min = [self.param_bounds[_][0] for _ in range(len(self.param_bounds))]
-            _max = [self.param_bounds[_][1] for _ in range(len(self.param_bounds))]
-            individual = np.random.uniform(low=_min, high=_max, size=self.n_params)
-            if not len(individual) == self.n_params:
-                raise ValueError(
-                    "Please insert the bounds as a tuple (min, max) or a list of tuples of length n_params")
-        else:
-            raise ValueError("Please insert the bounds as a tuple (min, max) or a list of tuples of length n_params")
+        _mins, _maxs = zip(*self.init_range)
+        individual = np.random.uniform(low=_mins, high=_maxs, size=self.n_params)
         return individual
 
     def generate_random_pop(self, pop_size: int) -> np.ndarray:
@@ -51,19 +68,8 @@ class Problem:
         Returns:
             A set of possible solutions randomly generated from `param_bounds`.
         """
-        if isinstance(self.param_bounds, tuple):
-            _min, _max = self.param_bounds
-            population = np.random.uniform(low=_min, high=_max, size=(pop_size, self.n_params))
-        elif isinstance(self.param_bounds, list):
-            _min = [self.param_bounds[_][0] for _ in range(len(self.param_bounds))]
-            _max = [self.param_bounds[_][1] for _ in range(len(self.param_bounds))]
-            population = np.random.uniform(low=_min, high=_max, size=(pop_size, self.n_params))
-            if not len(population[0]) == self.n_params:
-                raise ValueError(
-                    "Please insert the bounds as a tuple (min, max) or a list of tuples of length n_params")
-        else:
-            raise ValueError(
-                "Please insert the bounds as a tuple (min, max) or a list of tuples of length n_params")
+        _mins, _maxs = zip(*self.init_range)
+        population = np.random.uniform(low=_mins, high=_maxs, size=(pop_size, self.n_params))
         return population
 
     def evaluate_fitness(self, params: np.ndarray) -> float:
@@ -88,11 +94,6 @@ class Problem:
         Returns:
             A possible solution with clipped values according to `param_bounds`.
         """
-        if isinstance(self.param_bounds, tuple):
-            _min, _max = self.param_bounds
-            params[:] = np.clip(params, _min, _max)
-        elif isinstance(self.param_bounds, list):
-            _min = [self.param_bounds[_][0] for _ in range(len(self.param_bounds))]
-            _max = [self.param_bounds[_][1] for _ in range(len(self.param_bounds))]
-            params[:] = np.clip(params, _min, _max)
+        _mins, _maxs = zip(*self.param_bounds)
+        params[:] = np.clip(params, _mins, _maxs)
         return params
