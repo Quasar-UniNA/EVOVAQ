@@ -26,14 +26,14 @@ class Problem:
 
         if isinstance(param_bounds, tuple):
                 self.param_bounds = [param_bounds] * self.n_params
-            elif isinstance(param_bounds, list):
-                if not len(param_bounds) == self.n_params:
-                    raise ValueError(
+        elif isinstance(param_bounds, list):
+            if not len(param_bounds) == self.n_params:
+                raise ValueError(
                         "Please insert the bounds as a tuple  of the type (min, max), (None, None), (min, None), (None, max), or a list of such tuples of length n_params")
-                else:
-                    self.param_bounds = param_bounds
             else:
-                raise ValueError("Please insert the bounds as a tuple or a list of tuples of length n_params")
+                self.param_bounds = param_bounds
+        else:
+            raise ValueError("Please insert the bounds as a tuple or a list of tuples of length n_params")
                 
         if isinstance(init_range, tuple):
             self.init_range = [init_range] * self.n_params
