@@ -94,6 +94,7 @@ class Problem:
         Returns:
             A possible solution with clipped values according to `param_bounds`.
         """
-        _mins, _maxs = zip(*self.param_bounds)
+        _mins = [bound[0] if bound[0] is not None else -np.inf for bound in self.param_bounds]
+        _maxs = [bound[1] if bound[1] is not None else np.inf for bound in self.param_bounds]
         params[:] = np.clip(params, _mins, _maxs)
         return params
