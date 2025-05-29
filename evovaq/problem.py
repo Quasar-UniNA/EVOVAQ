@@ -41,6 +41,8 @@ class Problem:
             if not len(init_range) == self.n_params:
                 raise ValueError(
                     "Please insert the initial range as a tuple (min, max) or a list of such tuples of length n_params")
+            else:
+                self.init_range = init_range
         elif init_range is None:
             self.init_range = [params if None not in params else (-1, 1) for params in self.param_bounds]
         else:
