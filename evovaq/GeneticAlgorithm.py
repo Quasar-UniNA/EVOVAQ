@@ -103,7 +103,7 @@ class GA(object):
         for i, (child1, child2) in enumerate(zip(offspring[::2], offspring[1::2])):
             if random.random() < self.cxpb:
                 child1[:], child2[:] = self.crossover(child1, child2)
-                recompute_fitness[i] = recompute_fitness[i + 1] = True
+                recompute_fitness[2 * i] = recompute_fitness[2 * i + 1] = True
 
         # Mutation step
         for i, mutant in enumerate(offspring):
