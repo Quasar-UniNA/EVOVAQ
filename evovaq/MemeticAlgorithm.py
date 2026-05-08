@@ -128,7 +128,8 @@ class MA(object):
                 pbar.close()
                 break
 
-            best, best_fit = sel_best(population, fitness, 1)
+            if self.elitism:
+                best, best_fit = sel_best(population, fitness, 1)
 
             # Global search method used to evolve the population of possible solutions
             offspring, fit_offspring, glob_nfev = self.global_search(problem, population, fitness)
@@ -148,18 +149,12 @@ class MA(object):
                     nfev += loc_nfev
 
             if self.elitism:
-                joint_pop = np.concatenate((offspring, best))
-                joint_fitness = np.concatenate((fit_offspring, best_fit))
+                worst_idx = np.argmax(fit_offspring)
+                offspring[worst_idx] = best
+                fit_offspring[worst_idx] = best_fit
 
-                # Sort from the best (min fitness) to worst (max fitness) individual
-                sorted_idx = np.argsort(joint_fitness)
-
-                # Replacement
-                population[:] = joint_pop[sorted_idx[:pop_size]]
-                fitness[:] = joint_fitness[sorted_idx[:pop_size]]
-            else:
-                population[:] = offspring
-                fitness[:] = fit_offspring
+            population[:] = offspring
+            fitness[:] = fit_offspring
 
             # Store the best solution ever found
             best_tracker.update(population, fitness)
