@@ -200,7 +200,7 @@ class GA(object):
             if self.elitism:
                 worst_idx = np.argmax(fit_offspring)
                 offspring[worst_idx] = best
-                fit_offspring[worst_idx] = best_fit
+                fit_offspring[worst_idx] = best_fit[0]
 
             population[:] = offspring
             fitness[:] = fit_offspring
