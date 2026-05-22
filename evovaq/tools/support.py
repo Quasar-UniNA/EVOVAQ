@@ -102,7 +102,7 @@ class BestIndividualTracker:
         """
         for ind, fit in zip(population, fitness):
             if fit < self.best_fit:
-                self.best_ind = ind
+                self.best_ind = ind.copy()
                 self.best_fit = fit
 
     def get_best(self):
